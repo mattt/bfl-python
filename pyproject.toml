@@ -1,0 +1,7 @@
+[project]
+name = "black-forest-labs"
+version = "0.1.0"
+description = "Unofficial Black Forest Labs API client"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = []
