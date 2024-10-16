@@ -4,4 +4,54 @@ version = "0.1.0"
 description = "Unofficial Black Forest Labs API client"
 readme = "README.md"
 requires-python = ">=3.8"
-dependencies = []
+dependencies = ["httpx>=0.27.2", "pydantic>=2.9.2", "typing-extensions>=4.12.2"]
+
+[project.optional-dependencies]
+testing = ["pytest>=8.3.3", "respx>=0.21.1"]
+
+[tool.setuptools]
+packages = ["black_forest_labs"]
+
+[tool.setuptools.package-data]
+"black_forest_labs" = ["py.typed"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle error
+    "F",   # Pyflakes
+    "I",   # isort
+    "W",   # pycodestyle warning
+    "UP",  # pyupgrade
+    "S",   # flake8-bandit
+    "BLE", # flake8-blind-except
+    "FBT", # flake8-boolean-trap
+    "B",   # flake8-bugbear
+    "ANN", # flake8-annotations
+]
+ignore = [
+    "E501",   # Line too long
+    "S113",   # Probable use of requests call without timeout
+    "ANN001", # Missing type annotation for function argument
+    "ANN002", # Missing type annotation for `*args`
+    "ANN003", # Missing type annotation for `**kwargs`
+    "ANN101", # Missing type annotation for self in method
+    "ANN102", # Missing type annotation for cls in classmethod
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed in {name}
+    "W191",   # Indentation contains tabs
+    "UP037",  # Remove quotes from type annotation
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = [
+    "S101",   # Use of assert
+    "S106",   # Possible use of hard-coded password function arguments
+    "ANN201", # Missing return type annotation for public function
+    "ANN202", # Missing return type annotation for private function
+]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+
+[tool.uv]
+dev-dependencies = ["ruff>=0.6.8"]
