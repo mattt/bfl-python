@@ -4,7 +4,11 @@ This is an unofficial Python client for interacting with the
 [Black Forest Labs API](https://api.bfl.ml/).
 
 ```console
-$ export BFL_API_KEY="..."
+pip install black-forest-labs
+```
+
+```console
+export BFL_API_KEY="..."
 ```
 
 ```python
